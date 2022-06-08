@@ -1,9 +1,9 @@
 <?php
-date_default_timezone_set('Europe/paris');
 
+date_default_timezone_set('Europe/Paris');
 
-require_once './include/footer.php';
-require_once './include/footer.php';
-require_once './include/footer.php';
+require_once './functions/autoLoadFunction.php';
 
-?>
+require_once './includes/head.php';
+require_once './includes/main.php';
+require_once './includes/footer.php';

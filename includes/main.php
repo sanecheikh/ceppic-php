@@ -3,9 +3,9 @@ require_once './includes/nav.php';
 ?>
 <main>
     <?php
-     if(isset($_GET['page'])) ?
+     if(isset($_GET['page'])) {
     $page=$_GET['page'];
-    echo $page;
+    echo $page;}
     if(isset($_GET['page']))
     $page = $_GET['page'];
     else
