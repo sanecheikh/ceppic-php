@@ -10,12 +10,16 @@ $erreurs = array();
 
 
 if (mb_strlen($nom)===0);
-array_push($_erreurs ,"il manque votre nom");
+array_push($erreurs ,"il manque votre nom");
 if(mb_strlen($prenom)===0);
 array_push($erreurs ,'il manque votre prenom');
-if (mb_strlen($email)===0);
+if (mb_strlen($email)===0)
 
 array_push($erreurs ,'il manque votre email');
+
+elseif (!filter_var($email, FILTER_VALIDATE_EMAIL))
+array_push($erreurs, "Votre adresse mail n'est pas conforme");
+
 if(count($erreurs)){
 $messageErreur = "<ul>";
 
@@ -23,36 +27,40 @@ for($i=0;$i<count($erreurs) ;$i++) {
     $messageErreur .="<l>";
     $messageErreur .=$erreurs[$i];
     $messageErreur .= "</li>";
+}
     echo $messageErreur;
+    include './includes/frminscription.php';
+
+}
+
+else {
+    $servername= "localhost";
+    $userName = "root";
+    $userPassword="";
+    $datebase = "cippic";
+    
+    try{
+        $connexion =new PDO("mysql:host=$server;dbname=$database",$userName,$userPassword,);
+        $connexion->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $requete ="INSER INTO utlisateus (id_utilisateur ,nom,prenom,email) values (null, '$nom','$prenom', '$email');";
+       
+        $connexion->exec($requete);
+        displayMessage(' Requete OK');
+    
+    
+       }
+    
+       catch(PDOException $e) {
+        die("Erreur : " . $e->getMessage());                
+       };
+   
 }
 }
 
 
-dump($nom);
-dump($prenom);
-dump($email);
-}
-else
-$message = "je ne viens pas du formilaire";
 
-echo $message;
-?>
-<form action="index.php?page=inscription"methode="post">
-    <div>
-        <label for="nom">Nom :</label>
-        <input type= "text" id="Nom=" name ="nom" value="<?=$nom ?>"/>
-    </div>
-    <div>
-    <label for="nom">prenom :</label>
-        <input type= "text" id="Prenom=" name ="prenom" value="<?=$prenom ?>"/>
-    </div>
-    <div>
-    <label for="nom">email :</label>
-        <input type= "text" id="Email= name = "email" value="<?=$email ?>"/>
-    </div>
-    <div>
-    <input type="reset" value="effacer"/>
-    <input type="submit" value="envoyer"/>
-    </div>
-</form>
- 
+else {
+    $nom = $prenom = $mail = $password= $Verifier_Password="";
+    include './includes/frmInscription.php';
+}
+

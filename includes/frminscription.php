@@ -8,9 +8,15 @@
         <input type="text" id="prenom" name="prenom" />
     </div>
     <div>
-        <label for="mail">e-mail :</label>
-        <input type="text" id="mail" name="mail" />
+        <label for="mail">email :</label>
+        <input type="text" id="mail" name="email" />
     </div>
+    <div> <label for="password">password1:</label>
+     <input type ='text' id ="passvord" name ="password"/>
+</div>
+<div><label for="password"> Password2:</label>
+     <input type ='text' id ="Password2" name ="password2"/></div>
+    
     <div>
         <input type="reset" value="Effacer" />
         <input type="submit" value="Envoyer" />
