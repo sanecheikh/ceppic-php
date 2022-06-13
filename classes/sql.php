@@ -5,16 +5,25 @@ class sql
     private string $userName = "root";
     private string $userPassword= "";
     private $database = "ceppic";
-    private string $connexion ;
+    private string $connection ;
 
-    public function__construct()
+    public function __construct()
     {
         try{
-            $this->connexion =new PDO("mysql:host=$server;dbname=$database",$userName,$userPassword,);
-            $this->connexion->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->connection =new PDO("mysql:host= $this->serverName;$this->database",$this->userName,$this->userPassword);
+            $this->connection->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     } catch(PDOException $e){
-        die("Erreur :".)
+        die("Erreur :". $e->getMessage());
     }
 
+}
+public function inserer($querry){
+    $this->connection-->exec($querry);
+
+}
+ public function __destruct()
+{
+    //echo "the connection is ";
+    $this-> connection= null ;
 }
 }

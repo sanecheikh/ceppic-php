@@ -1,12 +1,16 @@
+
+<?php
+//session_start();
+?>
 <h1>Login</h1>
 <?php
-if (isset($_POST['frmConnexion'])){
+if (isset($_POST['frmLogin'])){
 $message= "je viens de me connecter";
 $email =htmlentities(trim($_POST['email']));
-$password=htlmentities(trim($post['password']));
+$password= htmlentities(trim($post['password']));
 
 $erreurs = array();
-if (mb_strlen($email)===0);
+if (mb_strlen($email)===0);     
 array_push($erreurs ,'il manque votre email');
 if (mb_strlen($password)===0);
 array_push($erreurs ,'il manque votre password');
@@ -30,6 +34,8 @@ include './include/frmLogin.php';
 
 else {
     include './include/frmLogin.php';
+    $_SESSION['loginUser']=$email;
+    echo $_SESSION['loginUser'];
 }
 }
 
@@ -50,8 +56,8 @@ include './include/frmLogin.php';
     <label for="password">password:</label>
         <input type= "password" id="password=" name =""/>
     </div>
-    <div>
-    <input type="submit" value="login"/>
+    <div><input type="submit" value="Effacer"/>
+    <input type="submit" value="Envoyer"/>
 
 </div>
 </from>
