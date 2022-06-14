@@ -1,17 +1,20 @@
 <h1>Inscription</h1>
+
 <?php
-if (isset($_POST['frmInscription'])){
+
+if (isset($_POST['frminscription'])){
 $message= "je viens du formulaire";
 $nom =htmlentities(trim($_POST['nom']));
 $prenom =htmlentities(trim($_POST['prenom']));
 $email =htmlentities(trim($_POST['email']));
-
+$password1 = htmlentities(trim($_POST['password1']));
+$password2 = htmlentities(trim($_POST['password2']));
 $erreurs = array();
 
 
-if (mb_strlen($nom)===0);
+if (mb_strlen($nom)===0)
 array_push($erreurs ,"il manque votre nom");
-if(mb_strlen($prenom)===0);
+if(mb_strlen($prenom)===0)
 array_push($erreurs ,'il manque votre prenom');
 if (mb_strlen($email)===0)
 
@@ -34,25 +37,14 @@ for($i=0;$i<count($erreurs) ;$i++) {
 }
 
 else {
-    $servername= "localhost";
-    $userName = "root";
-    $userPassword="";
-    $datebase = "cippic";
-    
-    try{
-        $connexion =new PDO("mysql:host=$server;dbname=$database",$userName,$userPassword,);
-        $connexion->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $requete ="INSER INTO utlisateus (id_utilisateur ,nom,prenom,email) values (null, '$nom','$prenom', '$email');";
+   
+        $password = password_hash($password1, PASSWORD_DEFAULT);
+        $requete ="INSERT INTO utilisateur (id_utilisateur ,nom,prenom,email,password) values (null, '$nom','$prenom', '$email','$password');";
        
-        $connexion->exec($requete);
-        displayMessage(' Requete OK');
-    
-    
-       }
-    
-       catch(PDOException $e) {
-        die("Erreur : " . $e->getMessage());                
-       };
+        $queryInsert = new Sql();
+        $queryInsert->inserer($requete);
+
+        displayMessage(' Requete OK');  
    
 }
 }
