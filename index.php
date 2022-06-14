@@ -1,4 +1,10 @@
+
 <?php
+session_start();
+
+spl_autoload_register(function ($className) {
+    require './classes/' . $className . '.php';
+});
 
 date_default_timezone_set('Europe/Paris');
 
