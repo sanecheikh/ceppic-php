@@ -29,7 +29,7 @@ public function inserer($query)
     $this->connection->exec($query);
 }
 public function Lister($query){
-    $this->connection->($query);
+    $this->connection->query($query)->fetchAll();
 }
 
 
