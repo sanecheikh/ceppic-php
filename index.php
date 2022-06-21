@@ -14,5 +14,5 @@ require_once './includes/head.php';
 require_once './includes/main.php';
 require_once './includes/footer.php';
 
-dump($_SERVER,"var_dump");
+//dump($_SERVER,"var_dump");
 //dump($_SERVER['REMOTE_ADD],"var_dump");

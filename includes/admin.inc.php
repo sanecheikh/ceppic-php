@@ -1,14 +1,18 @@
 <h1>Admim</h1>
 <?php
 
-$requete = 'SELECT * FROM utilisateur order by id_utilisateur DESC';
-$myusers=array();
+$requete = "SELECT * FROM utilisateur order by id_utilisateur DESC";
+$users = array();
 $querySelect = new Sql();
-$myusers = $querySelect->lister($requete);
-
-// dump($users);
+$users = $querySelect->Lister($requete);
+if (count($users) == 0)
+{
+    echo "<h2>Aucun utilisateurs  dans votre base de donnée !</h2>";
+    die();
+}
 ?>
-<table class="list-users">
+
+ <table class="list-users">
     <thead>
         <th>Id</th>
         <th>Nom</th>
@@ -19,7 +23,7 @@ $myusers = $querySelect->lister($requete);
     </thead>
     <tbody>
         <?php
-        foreach ($myUsers as $user) {
+        foreach ($users as $user) {
         ?>
             <tr>
                 <td><?= $user['id_utilisateur'] ?></td>

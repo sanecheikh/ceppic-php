@@ -4,6 +4,9 @@
         <ul>
         <li><a href="index.php?page=accueil">Accueil</a></li>
        <li><a href="index.php?page=contact">Contact</a></li>
+       <li><a href="index.php?page=admin">Admin</a></li>
+       
+
        <?php
        if (isset($_SESSION['LoginUser'])) {
             ?>
