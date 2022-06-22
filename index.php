@@ -3,7 +3,7 @@
 session_start();
 require'./vendor/autoload.php';
 $test = "12345";
-var_dump($test);
+
 
 spl_autoload_register(function ($className) {
     require './classes/' . $className . '.php';
