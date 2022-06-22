@@ -1,4 +1,13 @@
+
 <?php
+session_start();
+require'./vendor/autoload.php';
+$test = "12345";
+
+
+spl_autoload_register(function ($className) {
+    require './classes/' . $className . '.php';
+});
 
 date_default_timezone_set('Europe/Paris');
 

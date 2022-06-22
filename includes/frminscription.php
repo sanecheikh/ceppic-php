@@ -8,18 +8,18 @@
         <input type="text" id="prenom" name="prenom" />
     </div>
     <div>
-        <label for="mail">email :</label>
-        <input type="text" id="mail" name="email" />
+        <label for="email">email :</label>
+        <input type="text" id="email" name="email" />
     </div>
     <div> <label for="password">password1:</label>
-     <input type ='text' id ="passvord" name ="password"/>
+     <input type ='text' id ="password1" name ="password1"/>
 </div>
 <div><label for="password"> Password2:</label>
-     <input type ='text' id ="Password2" name ="password2"/></div>
+     <input type ='text' id ="password2" name ="password2"/></div>
     
     <div>
         <input type="reset" value="Effacer" />
         <input type="submit" value="Envoyer" />
     </div>
-    <input type="hidden" name="frmInscription" />
+    <input type="hidden" name="frminscription" />
 </form>
