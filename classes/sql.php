@@ -28,17 +28,27 @@ public function inserer($query)
 {
     $this->connection->exec($query);
 }
-public function Lister($query){
-    $this->connection->($query);
+
+public function lister($query)
+{
+    $resultat = $this->connection->prepare($query);
+    $resultat->execute();
+    return $resultat->fetchAll();
 }
 
-
-//  public function __destruct()
-//   {
-//      $this->connexion = null;
-//  }
+public function supprimer($query,$idUser)
+{
+    $resultat = $this->connexion->prepare($query);
+    $resultat->bindValue(':id',$idUser,PDO::PARAM_INT);
+    $resultat->execute();
 }
 
+public function __destruct()
+{
+    if(isset($this->connection))
+        $this->connexion = null;
+}
+}
 
 
 
